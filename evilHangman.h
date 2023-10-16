@@ -4,19 +4,18 @@
 #ifndef evilHangman_h
 #define evilHangman_h
 
-class evilHangman : public hangman{
-    std::string array[466550];
+class evilHangman :public hangman{
     std::string hidden;
     
 
 
 public:
 
-    evilHangman();
-    
-    void printArray();
-    
-    void readTXT();
+
+  evilHangman(std::string hid){
+    hangman h = hangman(hid, 5);
+  }    
+   
 
      
 

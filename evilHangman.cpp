@@ -3,37 +3,36 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <cstdlib> 
 
 
+std::string arr[466550];
 
 
-void evilHangman::readTXT(){
+void readTXT(){
     std::fstream myFile;
     std::string temp;
     int i =0;
     if(myFile.is_open()){
         while(getline(myFile, temp)){
-            array[i] = temp;
+            arr[i] = temp;
             i++;
         }
     }
 }
 
 
-void evilHangman::printArray(){
-    int length = 466550;
-    for(int i = 0; i < length; i++){
-        std::cout << array[i] << std::endl;
-    }
 
-}
 
 
 
 int main(){
-    evilHangman eh = evilHangman();
-    eh.readTXT();
-    eh.printArray();
+    readTXT();
+    for(int j = 0; j < 466550; j++){
+        std::cout << arr[j] << std::endl;
+    }
+    int i = (rand() % (466550));
+    evilHangman eh = evilHangman(arr[i]);
 }
 
 

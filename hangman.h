@@ -2,6 +2,7 @@
 #include <string>
 #ifndef hangman_h
 #define hangman_h
+#include <fstream>
 
 
 
@@ -11,6 +12,7 @@ class hangman{
   int wordLength;
   std::string word;
   std::string display;
+  
 
   void displayBoard();
 
@@ -31,7 +33,12 @@ class hangman{
     }
   }
 
-  hangman();
+  hangman(){}
+
+
+  void readTXT();
+
+  void printArray();
 
   ~hangman(){};
   

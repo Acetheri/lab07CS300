@@ -1,9 +1,12 @@
 #include "hangman.h"
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <cstdlib>
 
 
 
+  std::string array[466550];
 
   void hangman::displayBoard(){
     std::cout << "The current Board is" << std::endl;
@@ -40,7 +43,13 @@
   }
 
 
-  
+  void hangman::printArray(){
+    int length = 466550;
+    for(int i = 0; i < length; i++){
+        std::cout << array[i] << std::endl;
+    }
+
+}
   
 
   int hangman::turn(){
@@ -95,8 +104,26 @@
 
 
 
+void readTXT(){
+    std::fstream myFile;
+    std::string temp;
+    int i =0;
+    myFile.open("words.txt");
+    if(myFile.is_open()){
+        while(getline(myFile, temp)){
+            array[i] = temp;
+           i++;
+        }
+   
+    }
+    
+    myFile.close();
+}
+
 int main(){
-  hangman hg = hangman("computer", 5);
+  std::string random = array[rand() % 466550];
+  std::cout << random  << std::endl;
+  hangman hg = hangman(random, 5);
   hg.play();
   }
 
