@@ -3,10 +3,11 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <vector>
 
 
 
-  std::string array[466550];
+  std::vector<std::string> vector;
 
   void hangman::displayBoard(){
     std::cout << "The current Board is" << std::endl;
@@ -44,9 +45,8 @@
 
 
   void hangman::printArray(){
-    int length = 466550;
-    for(int i = 0; i < length; i++){
-        std::cout << array[i] << std::endl;
+    for(int i = 0; i < vector.size(); i++){
+        std::cout << vector.at(i) << std::endl;
     }
 
 }
@@ -111,8 +111,8 @@ void readTXT(){
     myFile.open("words.txt");
     if(myFile.is_open()){
         while(getline(myFile, temp)){
-            array[i] = temp;
-           i++;
+            vector.push_back(temp);
+           
         }
    
     }
@@ -121,7 +121,8 @@ void readTXT(){
 }
 
 int main(){
-  std::string random = array[rand() % 466550];
+  readTXT();
+  std::string random =vector.at(rand() % 466550);
   std::cout << random  << std::endl;
   hangman hg = hangman(random, 5);
   hg.play();
